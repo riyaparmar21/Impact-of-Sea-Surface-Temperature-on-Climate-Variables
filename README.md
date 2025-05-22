@@ -84,13 +84,61 @@ This repository includes two Streamlit applications:
 
 ## Main Outputs
 
-```
-# Expected outputs include:  
-# - Correlation heatmaps between SST and climate variables  
-# - Time-series plots of SST trends  
-# - Interactive maps showing spatial overlays of climate variables  
-# - Dashboard screenshots (included here for visual reference)
-```
+
+This project provides a comprehensive analysis of Sea Surface Temperature (SST) impacts on key climate variables over the Konkan coast region (approx. 16°N - 21°N, 69°E - 74°E), primarily utilizing NOAA and ECMWF datasets. The interactive Streamlit dashboard serves as the central platform for visualizing these analyses and exploring climate dynamics.
+
+**Key outputs and insights you can expect from this dashboard include:**
+
+### 1. Detailed Single Variable Climate Analysis:
+Users can explore the characteristics of individual climate variables, including:
+*   **Spatial Patterns:**
+    *   **Average Heatmaps:** Visualize the time-averaged spatial distribution (e.g., `SST Average Heatmap`, `Precipitation Average Heatmap`, `MSL Average Heatmap`).
+    *   **Seasonal Average Heatmaps:** Understand how spatial patterns change across meteorological seasons (Dec–Jan–Feb, Mar–Apr–May, Jun–Jul–Aug, Sep–Oct–Nov) for variables like SST, Precipitation, T2M, etc.
+*   **Temporal Trends & Variability:**
+    *   **Area-Averaged Time Series:** Track the evolution of spatially averaged variables over the analysis period (e.g., `SST Area Average Timeseries`, `Precipitation Timeseries`).
+    *   **Seasonal Cycle Time Series:** Examine the climatological monthly progression for variables like SST and T2M, highlighting typical annual cycles.
+    *   **Anomaly Time Series:** Identify deviations from the long-term mean (e.g., `SST Anomalies Timeseries`), crucial for understanding unusual climate events.
+    *   **Specific Grid Point Analysis:** Investigate time series at selected grid points to understand local variations (e.g., `Precipitation At Selected Grid Points`).
+*   **Statistical Distributions & Summaries:**
+    *   **Monthly Mean Bar Plots:** Compare average monthly values (e.g., `T2M Monthly Mean Barplot`).
+    *   **Seasonal Mean Bar Plots:** Compare average seasonal values (e.g., `TCC Seasonal Mean Barplot`).
+
+### 2. SST-Driven Combined Variable Analysis:
+The dashboard allows for in-depth exploration of how SST influences other critical climate parameters:
+*   **SST vs. Other Variables (Precipitation, T2M, MSL, TCC, U10, V10):**
+    *   **Combined Time Series Plots:** Simultaneously view the time series of SST and another selected variable on a twin-axis plot, resampled to a common monthly frequency for aligned comparison.
+    *   **Scatter Plots & Correlation:** Accompanying scatter plots visualize the direct relationship, with a calculated Pearson correlation coefficient and p-value indicating the strength and significance of the linkage.
+*   **SST-TCC Spatial Correlation:** A dedicated map showing the grid-point level temporal correlation between SST and Total Cloud Cover, revealing spatially varying relationships.
+
+### 3. Inter-Variable Relationships (User-Defined Pairs):
+A flexible analysis mode empowers users to explore relationships between *any two* selected climate variables:
+*   **"Two Variable Combined Timeseries":** Select any pair of available variables (e.g., Precipitation vs. MSL, T2M vs. TCC) to generate:
+    *   Aligned monthly mean time series on a twin-axis plot.
+    *   A corresponding scatter plot with a trend line.
+    *   The Pearson correlation coefficient and p-value.
+    *   This allows for discovery of novel or less obvious interactions within the climate system of the region.
+
+### 4. Holistic Climate System Overview:
+*   **Correlation Matrix:** A comprehensive matrix displaying Pearson correlation coefficients between all primary climate variables, providing a quick overview of linear relationships across the dataset.
+*   **ECMWF Multipanel Overview:** A single figure presenting time-averaged spatial maps of key ECMWF variables (MSL, TCC, T2M, Wind Speed & Vectors), offering a snapshot of the mean climate state.
+
+### 5. Contextual Cyclone Information:
+*   An interactive dialog provides details on major cyclones (Kyarr 2019, Nisarga 2020, Tauktae 2021, Biparjoy 2023) that impacted or were near the study region.
+*   Includes:
+    *   Region of impact.
+    *   Satellite imagery.
+    *   **Detailed textual explanations** on their characteristics, intensity, and observed or potential impacts on local climate variables (SST, precipitation, wind, etc.), providing context for observed anomalies in the data.
+
+### 6. Data Accessibility:
+*   Download buttons for the core NetCDF datasets (NOAA Precipitation, NOAA SST, ECMWF combined) used in the analyses.
+*   Download capability for generated plot images and, where applicable (e.g., Correlation Matrix), the underlying numerical data in CSV format.
+
+### 7. Customizable Visualizations:
+*   The dashboard primarily uses dynamically generated plots based on user selections, ensuring visualizations are tailored to the specific analysis being performed.
+*   **Permanent Plot Explanations:** Each plot type is accompanied by a detailed, pre-written explanation outlining what the plot shows, how to interpret it, and potential insights, making the dashboard a valuable learning and analysis tool.
+
+---
+This dashboard aims to facilitate a deeper understanding of the regional climate dynamics around the Konkan coast in the Arabian Sea, with a particular focus on the influence of Sea Surface Temperatures and the impact of significant cyclonic events.
 
 ## Project Status
 
@@ -102,8 +150,5 @@ This project is licensed under the [Creative Commons Attribution 4.0 Internation
 
 ---
 
-*Developed by \[Your Name], Space Applications Centre, ISRO.*
+*Developed by Riya Parmar. This work originated from an internship project at the Space Applications Centre (SAC), ISRO.*
 
----
-
-Let me know if you want me to help fill in the directory structure or main outputs once you share your folder.
