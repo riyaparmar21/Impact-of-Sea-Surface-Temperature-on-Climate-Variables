@@ -78,6 +78,7 @@ This repository includes two Streamlit applications:
 
 ## Directory Structure
 
+```bash
 ISRO/
 ├── datasets/
 │   ├── ecmwf datas.nc
@@ -263,7 +264,7 @@ ISRO/
     │       ├── sst_vs_u10_timeseries.png
     │       └── sst_vs_t2m_timeseries.png
 
-
+```
 
 ## Main Outputs
 
