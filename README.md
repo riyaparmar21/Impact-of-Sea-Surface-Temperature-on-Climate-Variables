@@ -78,9 +78,71 @@ This repository includes two Streamlit applications:
 
 ## Directory Structure
 
-```
-# To be updated after cleaning and organizing files
-```
+
+---> visualizations/
+  visualizations/
+    .DS_Store
+    sst noaa/
+      .DS_Store
+      noaa_sst_seasonal_averages.png
+      sst noaa area avg.png
+      sst noaa anomalies (diff from climatological mean).png
+      noaa_sst_average_heatmap.png
+      sst noaa seasonal cycle.png
+    ecmwf/
+      .DS_Store
+      10m wind speed area avg.png
+      avg wind speed vectors.png
+      ecmwf_wind_vectors_average.png
+      ecmwf_all_variables_average_panel.png
+      tcc/
+        seasonal mean cloud cover.png
+        total cloud cover seasonal cycle.png
+        ecmwf_tcc_average_heatmap.png
+        tcc seasonal avg heatmaps.png
+        total cloud cover (area avg).png
+      msl/
+        msl seasonal avg heatmaps.png
+        mean sea level pressure.png
+        ecmwf_msl_average_heatmap.png
+        mean sea level pressure seasonal cycle.png
+      t2m/
+        2m temp mon mean bar plot.png
+        2m temp area avg.png
+        t2m seasonal avg heatmaps.png
+        2m temp seasonal cycle.png
+        ecmwf_t2m_average_heatmap.png
+      v10/
+        v10 seasonal avg heatmaps.png
+        10m v wind area avg.png
+        10m v wind seasonal cycle.png
+        ecmwf_v10_average_heatmap.png
+      u10/
+        10m u wind seasonal cycle.png
+        ecmwf_u10_average_heatmap.png
+        u10 seasonal avg heatmaps.png
+        10m u wind (area avg).png
+    combinations/
+      .DS_Store
+      2 variables timeseries/
+        precip_vs_v10_timeseries.png
+        sst_vs_v10_timeseries.png
+        t2m_vs_u10_timeseries.png
+        msl_vs_precip_timeseries.png
+        msl_vs_sst_timeseries.png
+        msl_vs_u10_timeseries.png
+        sst_vs_tcc_timeseries.png
+        precip_vs_tcc_timeseries.png
+        msl_vs_t2m_timeseries.png
+        tcc_vs_u10_timeseries.png
+        t2m_vs_tcc_timeseries.png
+        msl_vs_v10_timeseries.png
+        tcc_vs_v10_timeseries.png
+        precip_vs_sst_timeseries.png
+        precip_vs_u10_timeseries.png
+        sst_vs_u10_timeseries.png
+        sst_vs_t2m_timeseries.png
+
 
 ## Main Outputs
 
