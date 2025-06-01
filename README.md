@@ -205,6 +205,12 @@ This repository includes two Streamlit applications:
 │   │
 │   ├── streamlit_using_images.py
 │   └── streamlit_using_scripts.py           (use this one for all functionalities and plots)
+│   │
+│   ├── ecmwf datas.nc      (used for final plotting and dashboard making)
+│   ├── noaa_konkan_sst.nc
+│   ├── noaa_sst_masked.nc  (used for final plotting and dashboard making)
+│   ├── precip_konkan.nc    (used for final plotting and dashboard making)
+│   └── precip.mon.mean.nc
 │
 └── visualizations/
     ├── .DS_Store
