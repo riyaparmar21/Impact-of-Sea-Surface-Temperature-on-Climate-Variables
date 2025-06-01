@@ -2,7 +2,7 @@
 Impact of Sea Surface Temperature (SST) on climate variables in the Arabian Sea near the Konkan coast of Maharashtra, using global reanalysis and observational datasets. Features correlation analysis and an interactive Streamlit dashboard for visualization.
 
 
-## Key Features & Achievements
+## Key Features & Achievements 
 
 * Correlation analysis between SST and climate variables (precipitation, mean sea level pressure, wind components, temperature, cloud cover).
 * Interactive dashboard built with Streamlit for exploratory data visualization.
