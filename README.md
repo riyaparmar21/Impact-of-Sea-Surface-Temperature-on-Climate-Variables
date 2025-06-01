@@ -78,68 +78,73 @@ This repository includes two Streamlit applications:
 
 ## Directory Structure
 
-```bash
-ISRO/
+```
 ├── datasets/
-│   ├── ecmwf datas.nc
+│   ├── ecmwf datas.nc      (used for final plotting and dashboard making)
 │   ├── noaa_konkan_sst.nc
-│   ├── noaa_sst_masked.nc
-│   ├── precip_konkan.nc
+│   ├── noaa_sst_masked.nc  (used for final plotting and dashboard making)
+│   ├── precip_konkan.nc    (used for final plotting and dashboard making)
 │   └── precip.mon.mean.nc
 │
 ├── notebooks/
-│   ├── checking dat…olation.ipynb
-│   ├── Combined v…izations.ipynb
-│   ├── comparing s…atasets.ipynb
+│   ├── checking data redundancy and need for interpolation.ipynb
+│   ├── Combined variables visualizations.ipynb
+│   ├── comparing sst jan datasets.ipynb
 │   ├── correlation matrix.ipynb
 │   ├── cross-correlation.ipynb
 │   ├── crs_reprojection.ipynb
 │   ├── deleting variables.ipynb
-│   ├── mosdac data…essing.ipynb
-│   ├── NOAA SST n…zations.ipynb
-│   ├── preprocess li…ip. data.ipynb
-│   ├── slicing and e…st data.ipynb
-│   ├── SST NOAA d…leaning.ipynb
-│   └── Visualization…atasets.ipynb
+│   ├── mosdac data preprocessing.ipynb
+│   ├── NOAA SST nan values masking - for visualizations.ipynb
+│   ├── preprocess lst, air temp and precip data.ipynb
+│   ├── slicing and extracting noaa sst data.ipynb
+│   ├── SST NOAA data extraction and cleaning.ipynb
+│   └── Visualizations - individual datasets.ipynb
 │
-├── plotting_scripts_for_images/
-│   ├── 2m temp are…ime series.py
+├── plotting_scripts_for_images/    (this scripts are used for streamlit_using_images.py file)
+│   ├── 2m temp area avg time series.py
 │   ├── 2m temp avg heatmap.py
-│   ├── 2m temp mo…n bar plot.py
-│   ├── 2m temp sea…heatmaps.py
-│   ├── 2m temp sea…me series.py
-│   ├── 10m wind sp…d area avg.py
+│   ├── 2m temp monthly mean bar plot.py
+│   ├── 2m temp seasonal avg heatmaps.py
+│   ├── 2m temp seasonal time series.py
+│   ├── 10m wind speed area avg.py
 │   ├── correlation matrix plot.py
 │   ├── msl area avg time series.py
 │   ├── msl avg heatmap.py
-│   ├── msl seasonal…heatmaps.py
+│   ├── msl seasonal avg heatmaps.py
 │   ├── msl seasonal time series.py
-│   ├── multipanel e…heatmaps.py
-│   ├── precip seaso…heatmaps.py
-│   ├── precipitation…heatmap.py
-│   ├── precipitation…ime series.py
-│   ├── precipitation…rid points.py
-│   ├── precipitation…ime series.py
-│   ├── seasonal me…er bar plot.py
-│   ├── sst - msl co…ed analysis.py
-│   ├── sst - t2m co…ad analysis.py
-│   ├── sst - tcc co…ed analysis.py
-│   ├── sst - tcc spa…th values.py
-│   ├── sst - u10 co…ed analysis.py
-│   ├── sst - v10 co…ed analysis.py
-│   ├── SST anomali…ime series.py
+│   ├── multipanel ecmwf variables avg heatmaps.py
+│   ├── precip seasonal avg heatmaps.py
+│   ├── precipitation area averaged heatmap.py
+│   ├── precipitation area avg time series.py
+│   ├── precipitation at selected grid points.py
+│   ├── precipitation seasonal time series.py
+│   ├── seasonal mean cloud cover bar plot.py
+│   ├── sst - msl combined analysis.py
+│   ├── sst - t2m combined analysis.py
+│   ├── sst - tcc combined analysis.py
+│   ├── sst - tcc spatial correlation with values.py
+│   ├── sst - u10 combined analysis.py
+│   ├── sst - v10 combined analysis.py
+│   ├── SST anomalies time series.py
 │   ├── SST area avg time series.py
 │   ├── SST avg heatmap.py
-│   ├── SST seasonal…heatmaps.py
-│   ├── SST seasonal…me series.py
-│   ├── sst-precip c…ed analysis.py
-│   ├── total cloud c…ime series.py
-│   ├── total cloud c…g heatmap.py
-│   ├── total cloud c…heatmaps.py
-│   ├── total cloud c…ime series.py
-│   ├── u wind area…time series.py
-│   ├── u wind seaso…me series.py
+│   ├── SST seasonal avg heatmaps.py
+│   ├── SST seasonal cycle time series.py
+│   ├── sst-precip combined analysis.py
+│   ├── total cloud cover area avg time series.py
+│   ├── total cloud cover avg heatmap.py
+│   ├── total cloud cover seasonal avg heatmaps.py
+│   ├── total cloud cover seasonal time series.py
+│   ├── u wind area avg time series.py
+│   ├── u wind seasonal time series.py
 │   └── u-10 wind avg heatmap.py
+|   |-- u-10 wind seasonal avg heatmaps.py
+|   |-- v wind area avg time series.py
+|   |-- v wind seasonal time series.py
+|   |-- v-10 wind avg heatmap.py
+|   |-- v-10 wind seasonal avg heatmaps.py
+|   |-- wind vectors avg heatmap.py
 │
 ├── streamlit/
 │   ├── cyclone images/
@@ -151,47 +156,55 @@ ISRO/
 │   ├── dashboard ss/
 │   ├── dashboard ss1/
 │   │
-│   ├── plotting_scripts/
-│   │   ├── 2m temp are…ime series.py
-│   │   ├── 2m temp avg heatmap.py
-│   │   ├── 2m temp mo…n bar plot.py
-│   │   ├── 2m temp sea…heatmaps.py
-│   │   ├── 2m temp sea…me series.py
-│   │   ├── 10m wind sp…d area avg.py
-│   │   ├── correlation matrix plot.py
-│   │   ├── msl area avg time series.py
-│   │   ├── msl avg heatmap.py
-│   │   ├── msl seasonal…heatmaps.py
-│   │   ├── msl seasonal time series.py
-│   │   ├── multipanel e…heatmaps.py
-│   │   ├── precip seaso…heatmaps.py
-│   │   ├── precipitation…heatmap.py
-│   │   ├── precipitation…ime series.py
-│   │   ├── precipitation…rid points.py
-│   │   ├── precipitation…ime series.py
-│   │   ├── seasonal me…er bar plot.py
-│   │   ├── sst - msl co…ed analysis.py
-│   │   ├── sst - t2m co…ad analysis.py
-│   │   ├── sst - tcc co…ed analysis.py
-│   │   ├── sst - tcc spa…th values.py
-│   │   ├── sst - u10 co…ed analysis.py
-│   │   ├── sst - v10 co…ed analysis.py
-│   │   ├── SST anomali…ime series.py
-│   │   ├── SST area avg time series.py
-│   │   ├── SST avg heatmap.py
-│   │   ├── SST seasonal…heatmaps.py
-│   │   ├── SST seasonal…me series.py
-│   │   ├── sst-precip c…ed analysis.py
-│   │   ├── total cloud c…ime series.py
-│   │   ├── total cloud c…g heatmap.py
-│   │   ├── total cloud c…heatmaps.py
-│   │   ├── total cloud c…ime series.py
-│   │   ├── u wind area…time series.py
-│   │   ├── u wind seaso…me series.py
-│   │   └── u-10 wind avg heatmap.py
+│   ├── plotting_scripts/      (this scripts are used for streamlit_using_scripts.py notebook)
+│   ├── 2m temp area avg time series.py
+│   ├── 2m temp avg heatmap.py
+│   ├── 2m temp monthly mean bar plot.py
+│   ├── 2m temp seasonal avg heatmaps.py
+│   ├── 2m temp seasonal time series.py
+│   ├── 10m wind speed area avg.py
+│   ├── correlation matrix plot.py
+│   ├── msl area avg time series.py
+│   ├── msl avg heatmap.py
+│   ├── msl seasonal avg heatmaps.py
+│   ├── msl seasonal time series.py
+│   ├── multipanel ecmwf variables avg heatmaps.py
+│   ├── plot_combined_timeseries.py
+│   ├── precip avg heatmap.py
+│   ├── precip seasonal avg heatmaps.py
+│   ├── precipitation area averaged heatmap.py
+│   ├── precipitation area avg time series.py
+│   ├── precipitation at selected grid points.py
+│   ├── precipitation seasonal time series.py
+│   ├── seasonal mean cloud cover bar plot.py
+│   ├── sst - msl combined analysis.py
+│   ├── sst - t2m combined analysis.py
+│   ├── sst - tcc combined analysis.py
+│   ├── sst - tcc spatial correlation with values.py
+│   ├── sst - u10 combined analysis.py
+│   ├── sst - v10 combined analysis.py
+│   ├── SST anomalies time series.py
+│   ├── SST area avg time series.py
+│   ├── SST avg heatmap.py
+│   ├── SST seasonal avg heatmaps.py
+│   ├── SST seasonal cycle time series.py
+│   ├── sst-precip combined analysis.py
+│   ├── total cloud cover area avg time series.py
+│   ├── total cloud cover avg heatmap.py
+│   ├── total cloud cover seasonal avg heatmaps.py
+│   ├── total cloud cover seasonal time series.py
+│   ├── u wind area avg time series.py
+│   ├── u wind seasonal time series.py
+│   └── u-10 wind avg heatmap.py
+|   |-- u-10 wind seasonal avg heatmaps.py
+|   |-- v wind area avg time series.py
+|   |-- v wind seasonal time series.py
+|   |-- v-10 wind avg heatmap.py
+|   |-- v-10 wind seasonal avg heatmaps.py
+|   |-- wind vectors avg heatmap.py
 │   │
 │   ├── streamlit_using_images.py
-│   └── streamlit_using_scripts.py
+│   └── streamlit_using_scripts.py           (use this one for all functionalities and plots)
 │
 └── visualizations/
     ├── .DS_Store
