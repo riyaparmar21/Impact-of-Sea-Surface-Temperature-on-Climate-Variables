@@ -78,6 +78,115 @@ This repository includes two Streamlit applications:
 
 ## Directory Structure
 
+ISRO/
+├── datasets/
+│   ├── ecmwf datas.nc
+│   ├── noaa_konkan_sst.nc
+│   ├── noaa_sst_masked.nc
+│   ├── precip_konkan.nc
+│   └── precip.mon.mean.nc
+├── notebooks/
+│   ├── checking dat…olation.ipynb
+│   ├── Combined v…izations.ipynb
+│   ├── comparing s…atasets.ipynb
+│   ├── correlation matrix.ipynb
+│   ├── cross-correlation.ipynb
+│   ├── crs_reprojection.ipynb
+│   ├── deleting variables.ipynb
+│   ├── mosdac data…essing.ipynb
+│   ├── NOAA SST n…zations.ipynb
+│   ├── preprocess li…ip. data.ipynb
+│   ├── slicing and e…st data.ipynb
+│   ├── SST NOAA d…leaning.ipynb
+│   └── Visualization…atasets.ipynb
+├── plotting_scripts_for_images/
+│   ├── 2m temp are…ime series.py
+│   ├── 2m temp avg heatmap.py
+│   ├── 2m temp mo…n bar plot.py
+│   ├── 2m temp sea…heatmaps.py
+│   ├── 2m temp sea…me series.py
+│   ├── 10m wind sp…d area avg.py
+│   ├── correlation matrix plot.py
+│   ├── msl area avg time series.py
+│   ├── msl avg heatmap.py
+│   ├── msl seasonal…heatmaps.py
+│   ├── msl seasonal time series.py
+│   ├── multipanel e…heatmaps.py
+│   ├── precip seaso…heatmaps.py
+│   ├── precipitation…heatmap.py
+│   ├── precipitation…ime series.py
+│   ├── precipitation…rid points.py
+│   ├── precipitation…ime series.py
+│   ├── seasonal me…er bar plot.py
+│   ├── sst - msl co…ed analysis.py
+│   ├── sst - t2m co…ad analysis.py
+│   ├── sst - tcc co…ed analysis.py
+│   ├── sst - tcc spa…th values.py
+│   ├── sst - u10 co…ed analysis.py
+│   ├── sst - v10 co…ed analysis.py
+│   ├── SST anomali…ime series.py
+│   ├── SST area avg time series.py
+│   ├── SST avg heatmap.py
+│   ├── SST seasonal…heatmaps.py
+│   ├── SST seasonal…me series.py
+│   ├── sst-precip c…ed analysis.py
+│   ├── total cloud c…ime series.py
+│   ├── total cloud c…g heatmap.py
+│   ├── total cloud c…heatmaps.py
+│   ├── total cloud c…ime series.py
+│   ├── u wind area…time series.py
+│   ├── u wind seaso…me series.py
+│   └── u-10 wind avg heatmap.py
+├── streamlit/
+│   ├── cyclone images/
+│   │   ├── biparjoy.jpg
+│   │   ├── kyaar.jpeg
+│   │   ├── nisarga.jpg
+│   │   └── tauktae.png
+│   ├── dashboard ss/
+│   ├── dashboard ss1/
+│   ├── plotting_scripts/
+│   │   ├── 2m temp are…ime series.py
+│   │   ├── 2m temp avg heatmap.py
+│   │   ├── 2m temp mo…n bar plot.py
+│   │   ├── 2m temp sea…heatmaps.py
+│   │   ├── 2m temp sea…me series.py
+│   │   ├── 10m wind sp…d area avg.py
+│   │   ├── correlation matrix plot.py
+│   │   ├── msl area avg time series.py
+│   │   ├── msl avg heatmap.py
+│   │   ├── msl seasonal…heatmaps.py
+│   │   ├── msl seasonal time series.py
+│   │   ├── multipanel e…heatmaps.py
+│   │   ├── precip seaso…heatmaps.py
+│   │   ├── precipitation…heatmap.py
+│   │   ├── precipitation…ime series.py
+│   │   ├── precipitation…rid points.py
+│   │   ├── precipitation…ime series.py
+│   │   ├── seasonal me…er bar plot.py
+│   │   ├── sst - msl co…ed analysis.py
+│   │   ├── sst - t2m co…ad analysis.py
+│   │   ├── sst - tcc co…ed analysis.py
+│   │   ├── sst - tcc spa…th values.py
+│   │   ├── sst - u10 co…ed analysis.py
+│   │   ├── sst - v10 co…ed analysis.py
+│   │   ├── SST anomali…ime series.py
+│   │   ├── SST area avg time series.py
+│   │   ├── SST avg heatmap.py
+│   │   ├── SST seasonal…heatmaps.py
+│   │   ├── SST seasonal…me series.py
+│   │   ├── sst-precip c…ed analysis.py
+│   │   ├── total cloud c…ime series.py
+│   │   ├── total cloud c…g heatmap.py
+│   │   ├── total cloud c…heatmaps.py
+│   │   ├── total cloud c…ime series.py
+│   │   ├── u wind area…time series.py
+│   │   ├── u wind seaso…me series.py
+│   │   └── u-10 wind avg heatmap.py
+│   ├── streamlit_using_images.py
+│   └── streamlit_using_scripts.py
+└── visualizations/
+    (empty or not shown)
 
 ---> visualizations/
   visualizations/
