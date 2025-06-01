@@ -1,0 +1,15 @@
+streamlit
+xarray
+numpy
+pandas
+matplotlib
+seaborn
+rioxarray
+scikit-learn
+netCDF4
+h5netcdf
+plotly
+scipy
+cmocean
+os
+cartopy
