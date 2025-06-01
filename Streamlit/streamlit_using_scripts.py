@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from Streamlit.plot_helpers import my_plot_function
+from streamlit.plot_helpers import my_plot_function
 
 import streamlit as st
 import xarray as xr
