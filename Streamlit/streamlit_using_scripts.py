@@ -323,28 +323,30 @@ with st.sidebar:
 
 # --- Cyclone Dialog ---
 if st.session_state.get('show_cyclone_dialog', False):
-    with st.dialog(title="Major Cyclones Affecting the Region (2019-2023)"): # Use with for dialogs
-        st.header("Notable Cyclones") 
-        if CYCLONES_DATA:
-            cyclone_tab_names = [cyc['name'] for cyc in CYCLONES_DATA]
-            if cyclone_tab_names:
-                cyclone_display_tabs = st.tabs(cyclone_tab_names) 
-                for i, tab_item in enumerate(cyclone_display_tabs):
-                    with tab_item:
-                        cyc_data_item = CYCLONES_DATA[i]
-                        st.write(f"**Region of Impact:** {cyc_data_item['region']}")
-                        # cyc_data_item['image'] is a Path object
-                        if cyc_data_item['image'].exists():
-                            try: 
-                                # Image.open works with Path objects or strings
-                                st.image(Image.open(cyc_data_item['image']), caption=cyc_data_item['name'], use_container_width=True) 
-                            except Exception as e_img: st.warning(f"Could not load image for {cyc_data_item['name']}: {e_img}") 
-                        else: st.warning(f"Image file not found: {cyc_data_item['image']}")
-                        st.markdown("---"); st.subheader("Details & Impact")
-                        st.markdown(cyc_data_item.get("explanation", "Detailed explanation pending."))
-        else: st.write("No cyclone data configured.") 
-        if st.button("Close Cyclone Info", key="close_cyclone_dialog_button_standard"): 
-            st.session_state.show_cyclone_dialog = False; st.rerun()
+    # Call st.dialog directly. Subsequent st commands will populate it.
+    st.dialog(title="Major Cyclones Affecting the Region (2019-2023)")
+    
+    # Content of the dialog starts here
+    st.header("Notable Cyclones") 
+    if CYCLONES_DATA:
+        cyclone_tab_names = [cyc['name'] for cyc in CYCLONES_DATA]
+        if cyclone_tab_names:
+            cyclone_display_tabs = st.tabs(cyclone_tab_names) 
+            for i, tab_item in enumerate(cyclone_display_tabs):
+                with tab_item: # st.tabs returns context managers for each tab
+                    cyc_data_item = CYCLONES_DATA[i]
+                    st.write(f"**Region of Impact:** {cyc_data_item['region']}")
+                    if cyc_data_item['image'].exists():
+                        try: 
+                            st.image(Image.open(cyc_data_item['image']), caption=cyc_data_item['name'], use_container_width=True) 
+                        except Exception as e_img: st.warning(f"Could not load image for {cyc_data_item['name']}: {e_img}") 
+                    else: st.warning(f"Image file not found: {cyc_data_item['image']}")
+                    st.markdown("---"); st.subheader("Details & Impact")
+                    st.markdown(cyc_data_item.get("explanation", "Detailed explanation pending."))
+    else: st.write("No cyclone data configured.") 
+    
+    if st.button("Close Cyclone Info", key="close_cyclone_dialog_button_standard"): 
+        st.session_state.show_cyclone_dialog = False; st.rerun()
 
 # --- Main Area: Plot Display ---
 st.header("Data Visualization")
