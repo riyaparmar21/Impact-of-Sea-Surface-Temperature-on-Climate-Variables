@@ -11,5 +11,4 @@ h5netcdf
 plotly
 scipy
 cmocean
-os
 cartopy
