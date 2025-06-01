@@ -15,12 +15,19 @@ import sys # For sys.executable in run_plotting_script
 st.set_page_config(page_title="SST Impact Analysis-demo", layout="wide")
 
 # --- File Definitions ---
-BASE_DIR = Path(".")
-NOAA_PRECIP_FILE = BASE_DIR / "precip_konkan.nc"
-ECMWF_FILE = BASE_DIR / "ecmwf datas.nc"
-NOAA_SST_FILE = BASE_DIR / "noaa_sst_masked.nc"
-CYCLONE_IMAGES_DIR = BASE_DIR / "cyclone images"
-PLOTTING_SCRIPTS_DIR = BASE_DIR / "plotting_scripts"
+SCRIPT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+NOAA_PRECIP_FILE = os.path.join(SCRIPT_DIRECTORY, 'precip_konkan.nc')
+NOAA_SST_FILE = os.path.join(SCRIPT_DIRECTORY, 'noaa_sst_masked.nc')
+ECMWF_FILE =  os.path.join(SCRIPT_DIRECTORY, 'ecmwf datas.nc')
+PLOTTING_SCRIPTS_DIR = os.path.join(SCRIPT_DIRECTORY, 'plotting_scripts')
+CYCLONE_IMAGES_DIR = os.path.join(SCRIPT_DIRECTORY, 'cyclone images')
+
+# BASE_DIR = Path(".")
+# NOAA_PRECIP_FILE = BASE_DIR / "precip_konkan.nc"
+# ECMWF_FILE = BASE_DIR / "ecmwf datas.nc"
+# NOAA_SST_FILE = BASE_DIR / "noaa_sst_masked.nc"
+# CYCLONE_IMAGES_DIR = BASE_DIR / "cyclone images"
+# PLOTTING_SCRIPTS_DIR = BASE_DIR / "plotting_scripts"
 
 if not PLOTTING_SCRIPTS_DIR.exists():
     st.error(f"CRITICAL: Plotting scripts directory not found at '{PLOTTING_SCRIPTS_DIR}'. Application cannot generate plots.")
