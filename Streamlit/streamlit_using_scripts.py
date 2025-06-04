@@ -142,20 +142,265 @@ def create_two_var_key(var1_ufk, var2_ufk):
 
 DEFAULT_PLOT_EXPLANATION = "Detailed explanation for this plot is pending."
 PLOT_EXPLANATIONS = { 
-    # ... (Your extensive PLOT_EXPLANATIONS dictionary remains unchanged) ...
     create_two_var_key('precip', 'v10'): """**Precipitation vs. 10 m Wind Speed**\n\nOver 2019–2024 the monsoon (Jun–Sep) rainfall peaks coincide with elevated 10 m wind speeds, illustrating the seasonal coupling of moisture and momentum. A sharp joint spike in June 2020 reflects Cyclone Nisarga’s heavy rains and storm‐force winds. Smaller simultaneous upticks in May 2021 and June 2023 mark Tauktae and Biparjoy passages. Outside storm periods, wind and rain retain distinct but overlapping seasonal phasing.""",
-    # (Include all your explanations here)
-    "Wind Vectors Average Heatmap": """Overlays average wind vectors (combining u10 and v10) atop mean SST contours. The arrows illustrate prevailing wind directions and magnitudes, revealing coastal upwelling zones where winds run parallel to the shore. Linking this with SST patterns helps interpret how wind-driven mixing affects regional sea surface temperatures."""
+
+    create_two_var_key('sst', 'v10'): """**SST vs. 10 m Wind Speed**\n\nSea‐surface temperature rises steadily into the pre-monsoon maximum (Mar–May), then cools under monsoon cloud cover, while surface winds strengthen with monsoon onset. Cyclone Kyarr in Oct 2019 produces a brief SST dip and wind surge, evidencing storm‐driven mixing. Later events (Tauktae, Biparjoy) induce similar but muted wind peaks and minor SST cooling. Overall, wind bursts during cyclones punctuate the smooth seasonal SST cycle.""",
+
+    create_two_var_key('t2m', 'u10'): """**2 m Temperature vs. U-Wind Component**\n\nNear-surface air temperature peaks in April–May each year then falls through the monsoon, whereas the zonal (u10) wind component intensifies with the southwest flow. Cyclone Tauktae (May 2021) shows a transient u10 boost and slight t2m dip as the storm’s westerly winds push ashore. Minor temperature fluctuations accompany other cyclones but recoup quickly post‐event. The underlying pattern remains a clear pre-monsoon thermal maximum and monsoon wind strengthening.""",
+
+    create_two_var_key('msl', 'precip'): """**MSL Pressure vs. Precipitation**\n\nMean sea level pressure falls sharply at monsoon onset, inversely tracking rainfall peaks. During Nisarga (Jun 2020) and Biparjoy (Jun 2023), MSLP plunges coincide with torrential precipitation spikes, marking classic cyclone signatures. Outside those storms, monsoon trough dynamics yield broad low‐pressure periods with sustained rain. The strong anticorrelation underscores how pressure drops drive convective rainfall in this region.""",
+
+    create_two_var_key('msl', 'sst'): """**MSL Pressure vs. SST**\n\nSeasonal MSLP minima in peak summer align with SST maxima just beforehand, as land/sea temperature gradients deepen. Kyarr (Oct 2019) briefly forces an anomalous pressure drop with a concomitant slight SST dip, reflecting enhanced mixing. Similar but smaller MSLP dips and SST coolings appear around Tauktae and Biparjoy. Otherwise, both variables follow their own seasonal rhythms—thermal buildup then monsoon‐driven cooling.""",
+
+    create_two_var_key('msl', 'v10'): """**MSL Pressure vs. 10 m Wind Speed**\n\nLow‐pressure monsoon months bring stronger surface winds; this inverse relationship holds across 2019–2024. Notably, Tauktae and Biparjoy yield sharp MSLP troughs with concurrent wind‐speed peaks, illustrating storm intensity. Between cyclones, wind variations trace gradual pressure changes as the monsoon advances and retreats. The tight coupling during extreme events contrasts with smoother seasonal cycles otherwise.""",
+
+    create_two_var_key('sst', 'tcc'): """**SST vs. Total Cloud Cover**\n\nSST reaches annual highs in pre-monsoon (Mar–May), while total cloud cover surges during the monsoon (Jun–Sep). Cyclone Nisarga stands out as a massive TCC spike in Jun 2020, alongside a brief SST drop from upwelling and mixing. Biparjoy in Jun 2023 shows a smaller cloud burst and surface cooling. Beyond storms, the eye-pleasing seesaw between clear, warm pre-monsoon skies and overcast monsoon persists.""",
+
+    create_two_var_key('precip', 'tcc'): """**Precipitation vs. Total Cloud Cover**\n\nMonsoon months exhibit tightly coupled peaks of rainfall and cloud cover, with cloudiness arcing just ahead of rain maxima. Storm events like Nisarga and Biparjoy appear as abrupt concurrent surges—extreme TCC and intense precipitation within days. Outside cyclones, the smooth monsoon build-up and retreat maintain a strong precipitation–cloud relationship. The regional convective regime is clearly manifest.""",
+
+    create_two_var_key('msl', 't2m'): """**MSL Pressure vs. 2 m Temperature**\n\nMean pressure lows during the monsoon coincide with moderate dips in 2 m temperature, driven by cloud shading and evaporative cooling. Cyclones Kyarr and Nisarga cause pronounced pressure drops with accompanying t2m dips of 1–2 °C. These thermal anomalies quickly rebound post-event. Overall, seasonal temperature minima align with monsoon low‐pressure periods.""",
+
+    create_two_var_key('tcc', 'u10'): """**Cloud Cover vs. U-Wind Component**\n\nDuring Jun–Sep the u10 component strengthens alongside peak cloud cover, as westerly monsoon flow feeds convection. Cyclone Tauktae produces a clear transient jump in both u10 and TCC in May 2021, highlighting storm‐enhanced cloudiness. Smaller bumps accompany Nisarga and Biparjoy. Otherwise, cloudiness and zonal winds rise and fall together with the monsoon’s advance and withdrawal.""",
+
+    create_two_var_key('sst', 't2m'): """**SST vs. 2 m Temperature**\n\nSST and air temperature both rise from winter into pre-monsoon, reflecting strong seasonal insolation. During June–September, SST levels off or drops slightly while 2 m temperature decreases more steeply under cloud cover. Cyclones like Nisarga and Biparjoy show momentary t2m cooling, while SST lags in its response. The pairing highlights surface–air heat exchange patterns disturbed only briefly by storms.""",
+
+    create_two_var_key('tcc', 'v10'): """**Cloud Cover vs. V-Wind Component**\n\nV10 winds (southerly/northerly) intensify during the monsoon months in tandem with higher cloud fractions. Cyclones like Tauktae and Biparjoy cause sharp TCC spikes and increased v10 variability due to turbulent vertical transport and shear. Outside cyclone events, the seasonal march of monsoon cloud decks tracks well with elevated v10 readings, signifying vertical moisture movement and convective depth.""",
+
+    create_two_var_key('sst', 'u10'): """**SST vs. U-Wind Component**\n\nSurface westerlies (u10) rise during the monsoon as SST begins to decline under cloud cover and evaporative cooling. Cyclone Kyarr’s late‐season burst in Oct 2019 generates a wind surge with subtle SST response. More prominent wind peaks emerge during Tauktae and Biparjoy in May–June. Overall, SST responds slowly to wind‐driven mixing, but storm pulses interrupt this gradual seasonal cooling arc.""",
+
+    create_two_var_key('t2m', 'v10'): """**2 m Temperature vs. V-Wind Component**\n\nFrom pre-monsoon into mid-summer, rising v10 winds (south-north flow) accompany falling 2 m temperatures, as overcast skies block solar input. Cyclone Nisarga’s June 2020 signature includes a temporary v10 spike and t2m cooling. Similar patterns occur in May 2021 (Tauktae) and June 2023 (Biparjoy). The broader pattern reveals cooling of the land surface under strong monsoonal vertical winds.""",
+
+    create_two_var_key('msl', 'u10'): """**MSL Pressure vs. U-Wind Component**\n\nPressure drops through the monsoon season coincide with strengthening westerly winds (u10), a hallmark of the southwest monsoon. Tauktae’s May 2021 landfall brings a steep drop in MSL and a matching u10 spike. Biparjoy echoes this pattern in 2023. These outliers punctuate the otherwise smooth seasonal descent in pressure and rise in zonal wind strength.""",
+
+    create_two_var_key('tcc', 't2m'): """**Cloud Cover vs. 2 m Temperature**\n\nHigh total cloud cover during the monsoon limits surface heating, suppressing 2 m temperatures. Each year this inverse relationship is clear, especially in Jul–Aug. Cyclones further deepen this contrast: Tauktae and Biparjoy cause dense cloud spikes with brief temperature dips. The data captures how insolation control by clouds dominates regional near-surface temperatures.""",
+
+    create_two_var_key('precip', 'sst'): """**Precipitation vs. SST**\n\nRising SST pre-monsoon precedes rain onset by 1–2 months, then dips during peak monsoon due to oceanic cooling under cloud and rain. Cyclone Nisarga produces intense rain and slight SST cooling in Jun 2020; Tauktae and Biparjoy also show SST dips during peak rainfall. The curve emphasizes how upper-ocean heat content modulates rainfall, and how cyclones briefly tip this balance.""",
+
+    create_two_var_key('precip', 't2m'): """**Precipitation vs. 2 m Temperature**\n\nPrecipitation ramps up as 2 m temperatures fall with monsoon onset in June. Cyclone Biparjoy in Jun 2023 produces a dramatic rain spike and accompanying t2m dip. Nisarga and Tauktae show similar but smaller signatures. Outside these events, the pre-monsoon to monsoon shift displays a consistent pattern of declining temperature as rainfall surges.""",
+
+    create_two_var_key('t2m', 'sst'): """**2 m Temperature vs. SST**\n\nBoth SST and 2 m temperature rise steadily through March–May, then diverge: t2m drops faster with monsoon cloud cover, while SST lags. During cyclones (e.g., Kyarr, Nisarga), t2m responds with short-lived cooling, while SST exhibits a delayed, milder dip. This pairing highlights land–sea thermal gradients during summer and storm-driven disruptions.""",
+
+    create_two_var_key('u10', 'v10'): """**U vs. V Wind Components**\n\nU10 and V10 wind components surge in synchrony during the monsoon, reflecting southwest flow dominance. Cyclones create temporary divergence—e.g., Tauktae (May 2021) and Biparjoy (Jun 2023) show offset wind spikes from directional shifts. Outside storm windows, the seasonal co‐variation suggests broad monsoon circulation patterns dominate both wind directions.""",
+    "SST-PRECIP Combined Analysis": """
+Here SST vs. precipitation correlations are displayed spatially. Moderate positive values (0.3–0.6) along the coast indicate that warmer seas boost evaporation and moisture convergence, driving heavier rainfall in the Konkan belt.
+""",
+
+    "SST-2M TEMP Combined Analysis": """
+This focused correlation heatmap isolates the relationship between 2 m air temperature and SST at each grid point. High coefficients (= 0.9) along the coastal cells confirm that near-surface air heating is tightly coupled to ocean warming, especially during summer months. 
+""",
+
+    "SST-MSL Combined Analysis": """
+A scatter-density plot with a trend line quantifying SST–MSL correlation across all time steps and grid cells. The negative slope visually confirms the inverse relationship: each 1 °C increase in SST corresponds to a notable drop in sea level pressure. This scatter view complements the spatial map by emphasizing the overall strength and linearity of the linkage.
+
+""",
+
+    "SST-TCC Combined Analysis": """
+Annotates SST vs. total cloud cover correlations with exact values (≈ 0.4–0.6 offshore). Warmer SSTs drive enhanced convection and cloud formation, a key feedback for radiation and precipitation processes that you capture.
+""",
+
+    "SST-U10 Combined Analysis": """
+This figure depicts the correlation between SST and the zonal wind (u10) component. Positive correlations (0.4–0.7) near the shore suggest that warm SSTs bolster easterly winds by altering pressure gradients.
+""",
+
+    "SST-V10 Combined Analysis": """
+A map of SST vs. meridional wind (v10) correlations, showing values up to \~0.9 in some coastal cells. Strong positive coupling indicates that SST-driven thermal contrasts significantly influence north–south wind patterns, shaping monsoon incursions inland.
+""",
+
+    "SST-TCC Spatial Correlation": """
+This annotated heatmap shows SST vs. total cloud cover (TCC) correlation with exact numerical labels in each cell. Values around 0.4–0.6 in offshore regions highlight moderate positive coupling—warmer water surfaces lead to more cloud formation.
+""",
+
+    "Correlation Matrix Plot": """
+A full correlation matrix heatmap showing Pearson correlation coefficients among NOAA precipitation, NOAA SST, ECMWF MSL, TCC, u10, v10, and 2 m temperature. Warm colors highlight strong positive relationships (e.g., TCC vs. precipitation), while cool colors mark negative links (e.g., MSL vs. SST). 
+""",
+
+    "ECMWF Multipanel Overview": """
+A multi-panel figure displaying the climatological mean of all key ECMWF variables (MSL, TCC, u10, v10, T2m) alongside NOAA SST. Each subplot uses a unified color scale to facilitate cross-variable comparisons. This panel synthesizes baseline conditions, showing—for instance—how high SST zones coincide with low-pressure troughs and enhanced cloud cover.
+""",
+
+    "PRECIP Average Heatmap": """
+Shows the 2019–2024 mean precipitation at each grid cell. Heaviest rainfall concentrates along the central Konkan coast, tapering inland. This baseline clarifies where SST-induced moisture convergence most strongly translates into precipitation, informing spatial weighting in your model inputs.
+
+""",
+
+    "PRECIP Seasonal Heatmaps": """
+Four-panel maps of seasonal precipitation ('Dec-Jan-Feb', 'Mar-Apr-May', 'Jun-Jul-Aug', 'Sep-Oct-Nov'). Jun-Jul-Aug exhibits a dramatic coastal rainfall spike with values often exceeding 400 mm, reflecting monsoon peak. In contrast, Dec-Jan-Feb is nearly dry. These seasonal snapshots help you learn distinct precipitation regimes tied to SST cycles.
+""",
+
+    "PRECIP Timeseries": """
+Monthly precipitation averaged over the Konkan grid, with clear annual peaks during monsoon months and lows in winter. This temporal profile establishes the strong seasonality your LSTM must model.
+""",
+
+    "PRECIP At Selected Grid Points": """
+Overlays precipitation time series from specific coastal and inland grid points. Contrasting profiles reveal that coastal cells have sharper monsoon peaks and larger interannual variability than inland cells.
+""",
+
+    "PRECIP Distribution Over Time": """
+A violin (or box-whisker) plot showing the distribution of monthly precipitation values across years. It visualizes variability and outliers, indicating that July and August have high medians.
+""",
+
+    "PRECIP Anomalies Timeseries": """
+Time series of precipitation anomalies (deviation from monthly climatological mean). Positive spikes denote wetter-than-normal months, while negatives mark drought phases. 
+""",
+
+    "PRECIP 6-Point Moving Average": """
+Monthly precipitation with a 3-month moving average overlay. The smoothing emphasizes multi-month trends, revealing anomalous monsoon years (e.g., 2021 dip or 2023 surge). Incorporating moving averages can help you capture longer-term persistence in rainfall anomalies.
+""",
+
+    "SST Average Heatmap": """
+Displays the mean sea surface temperature (SST) from 2019 to 2024 at each grid cell. The warmest waters (˜29–30 °C) concentrate along the coastal strip, tapering offshore. This baseline highlights the persistent heat reservoirs that modulate regional convection and drive monsoon dynamics in your climate-impact analysis.
+""",
+
+    "SST Anomalies Timeseries": """
+Time series of SST anomalies—deviations from the multi-year monthly mean. Positive anomalies in 2020 and 2023 indicate warmer-than-normal years. Such anomaly tracking is crucial for identifying the impact of unusual ocean warming on rainfall and pressure patterns.
+""",
+
+    "SST Area Average Timeseries": """
+Monthly area‐averaged SST for the Konkan domain, smoothing spatial variability to reveal broad seasonal trends and interannual differences. Key for correlating SST patterns with regional climate anomalies.
+""",
+
+    "SST Seasonal Heatmaps": """
+Four-panel seasonal SST maps ('Dec-Jan-Feb', 'Mar-Apr-May', 'Jun-Jul-Aug', 'Sep-Oct-Nov'). Pre-monsoon (Mar-Apr-May) and peak monsoon (Jun-Jul-Aug) panels show maximum SSTs, with coastal temperatures peaking near 31 °C. Winter (Dec-Jan-Feb) depicts cooling to around 26 °C. These snapshots emphasize how seasonal SST swings set the stage for atmospheric responses.
+""",
+
+    "SST Seasonal Cycle Timeseries": """
+A line plot of the monthly climatological SST cycle. It reveals a gradual rise from January’s \~27 °C to a June–July peak near 30 °C, followed by a decline into December. This smooth cycle aids by pinpointing lags between SST peaks and downstream atmospheric effects.
+""",
+
+    "T2M Area Average Timeseries": """
+Area-averaged time series of 2 m temperature for the Konkan grid. It shows a clear seasonal cycle with maxima in May–June and minima in December.
+""",
+
+    "T2M Monthly Mean Barplot": """
+Bar chart of monthly mean 2 m temperatures. The bars quantify the amplitude of seasonal warming, peaking pre-monsoon. This visualization aids in communicating baseline thermal loads when SST anomalies occur.
+""",
+
+    "T2M Seasonal Heatmaps": """
+Four-panel seasonal maps of 2 m temperature. Summer (Sep-Oct-Nov, Jun-Jul-Aug) panels show the strongest coastal warming, while winter (Dec-Jan-Feb) has more uniform cool temperatures. These spatial patterns guide the CNN component to learn season-specific temperature gradients.
+""",
+
+    "T2M Seasonal Timeseries": """
+Line plot of the seasonal cycle (monthly climatology) of 2 m temperature. Smooth curves highlight inter-month transitions, emphasizing how air temperature lags or leads SST—critical information.
+""",
+
+    "MSL Average Heatmap": """
+Heatmap of mean sea level pressure (MSL) averaged over 2019–2024. It highlights low-pressure belts offshore where warmer SSTs drive enhanced convection. Coastal pressure minima align with known monsoon trough locations, critical for modeling storm genesis in your LSTM–CNN framework.
+""",
+
+    "MSL Area Average Timeseries": """
+Spatial map of MSL at a representative time (e.g., July 2022). It visualizes pressure gradients across the Konkan coast, revealing zones where low pressure intensifies. Comparing this snapshot with concurrent SST maps can pinpoint specific events when ocean warmth triggered pressure drops.
+""",
+
+    "MSL Seasonal Heatmaps": """
+Seasonal MSL maps ('Dec-Jan-Feb', 'Mar-Apr-May', 'Jun-Jul-Aug', 'Sep-Oct-Nov') illustrating the deepest Jun-Jul-Aug trough mirroring peak SSTs and transitional patterns in Mar-Apr-May/Sep-Oct-Nov. Informs how SST anomalies precede pressure changes.
+""",
+
+    "MSL Seasonal Timeseries": """
+A time series plot showing the monthly climatological cycle of MSL. Noticeable dips in June–September reflect the monsoon low-pressure system, while peaks in December–February indicate the winter high-pressure regime. This seasonal signature is foundational for interpreting SST–MSL coupling.
+""",
+
+    "TCC Average Heatmap": """
+Climatological mean total cloud cover (TCC) heatmap. Areas with frequent cloudiness align with warm SST and low-pressure zones. This baseline helps assess how SST anomalies shift cloud patterns, affecting radiation and precipitation.
+""",
+
+    "TCC Area Average Timeseries": """
+Time series of area-averaged TCC over the Arabian Sea - Konkan grid. It peaks sharply during the monsoon months and dips in winter, mirroring MSL and SST cycles. 
+""",
+
+    "TCC Seasonal Heatmaps": """
+Seasonal cloud cover maps showing maximum JJA cloudiness driven by strong SST‐induced convection and sparse DJF cover. Supports season-specific model training.
+""",
+
+    "TCC Seasonal Timeseries": """
+Line plot of monthly mean TCC. The smooth seasonal curve illustrates the build-up and decline of cloudiness, providing a temporal context for when SST anomalies have maximum impact on cloud formation.
+""",
+
+    "TCC Seasonal Mean Barplot": """
+Panel of seasonal mean TCC maps. The monsoon season (Jun-Jul-Aug) exhibits maximum cloud cover, reflecting high SST-driven convection. Winter (Dec-Jan-Feb) shows sparse clouds, reinforcing the seasonality captured in your correlation analysis.
+""",
+
+    "U10 Average Heatmap": """
+Mean ECMWF 10 m zonal wind (u10) heatmap. Positive values indicate easterly winds dominating along the coast. Comparing this with SST reveals how thermal gradients drive zonal wind shifts relevant for moisture transport.
+
+""",
+
+    "U10 Area Average Timeseries": """
+Area-averaged u10 time series, highlighting seasonal peaks during pre-monsoon and early monsoon, when SSTs are rising. These wind bursts enhance ocean mixing, impacting SST anomalies.
+""",
+
+    "U10 Seasonal Heatmaps": """
+Four-panel seasonal maps of u10. The Jun-Jul-Aug panel shows strongest easterly flow; 
+Dec-Jan-Feb shows weak westerlies or neutral winds.
+""",
+
+    "U10 Seasonal Timeseries": """
+Line graph of the seasonal climatology of u10. It shows a clear increase in easterlies from March to June, followed by a decline post-monsoon.
+""",
+
+    "V10 Average Heatmap": """
+Mean meridional wind (v10) averaged over 2019–2024. Positive (northward) flows dominate, with pockets of southward winds aligning with cooler SST zones. This map sets the baseline for v10–SST correlation studies.
+""",
+
+    "V10 Area Average Timeseries": """
+Area-averaged v10 time series, showing strong northward winds in the monsoon months. Peaks in July correspond with peak SSTs.
+
+""",
+
+    "V10 Seasonal Heatmaps": """
+Four-panel seasonal distribution of v10. Jun-Jul-Aug shows the strongest uniform northward wind band, while Dec-Jan-Feb  reveals scattered weaker flows.
+""",
+
+    "V10 Seasonal Timeseries": """
+Seasonal cycle of v10 plotted as a smooth monthly climatology. It highlights how northward flow intensifies sharply in June and wanes by October.
+""",
+
+    "Wind Speed Area Average": """
+Shows the spatial average of ECMWF 10-meter wind speed over the Konkan region from 2019 to 2024. By smoothing out local variability, it highlights seasonal peaks—stronger winds during monsoon onset (June–July) and calmer conditions in winter. Useful for benchmarking how wind energy potential and mixing in coastal waters relate to SST-driven changes.
+""",
+
+    "Wind Vectors Average Heatmap": """
+Overlays average wind vectors (combining u10 and v10) atop mean SST contours. The arrows illustrate prevailing wind directions and magnitudes, revealing coastal upwelling zones where winds run parallel to the shore. Linking this with SST patterns helps interpret how wind-driven mixing affects regional sea surface temperatures.
+"""
 }
+
 
 
 # --- Cyclone Data ---
 CYCLONES_DATA = [
-    {"name": "Cyclone Kyarr (2019)", "region": "Western India, Oman, Yemen, Somalia", "image": CYCLONE_IMAGES_DIR / "kyaar.jpeg", "explanation": "Cyclone Kyarr (October 2019) skirted..."},
-    {"name": "Cyclone Nisarga (2020)", "region": "Maharashtra (Alibag),Maharashtra,", "image": CYCLONE_IMAGES_DIR / "nisarga.jpg", "explanation": "Cyclone Nisarga (June 2020) made landfall..."},
-    {"name": "Cyclone Tauktae (2021)", "region": "Gujarat, Maharashtra, Karnataka, Goa, Kerala", "image": CYCLONE_IMAGES_DIR / "tauktae.png", "explanation": "Cyclone Tauktae (May 2021) tracked parallel..."},
-    {"name": "Cyclone Biparjoy (2023)", "region": "Gujarat (Did not make landfall as expected, skirted coast)", "image": CYCLONE_IMAGES_DIR / "Biparjoy.jpg", "explanation": "Cyclone Biparjoy (June 2023) passed north..."}
+    {
+        "name": "Cyclone Kyarr (2019)", 
+        "region": "Western India, Oman, Yemen, Somalia", 
+        "image": CYCLONE_IMAGES_DIR / "kyaar.jpeg",
+        "explanation": """
+Cyclone Kyarr was an extremely severe cyclonic storm that formed in the Arabian Sea in October 2019. It Cyclone Kyarr (October 2019) skirted the western Arabian Sea, raising SST anomalies (+0.8 °C) as it suppressed coastal upwelling. The associated deep low-pressure system (< 990 hPa) drew strong northerly v10 winds (exceeding 5 m/s) into the region. Although Kyarr stayed offshore, peripheral rainbands delivered light to moderate precipitation (50–80 mm/day) and increased total cloud cover by 15–25%, highlighting how distant storms still modulate Konkan’s climate variables.
+        """
+    },
+    {
+        "name": "Cyclone Nisarga (2020)", 
+        "region": "Maharashtra (Alibag),Maharashtra,", 
+        "image": CYCLONE_IMAGES_DIR / "nisarga.jpg",
+        "explanation": """
+Cyclone Nisarga (June 2020) made landfall near Mumbai, directly impacting the Konkan coast. Peak SSTs beneath the storm climbed by \~1 °C pre-landfall, fueling moist convection. Surface pressure plunged below 985 hPa, driving strong easterly u10 winds (> 6 m/s) and northerly v10 gusts. The system dumped over 300 mm of rain in 24 hours, creating extreme precipitation anomalies (+200 mm above climatology) and boosting cloud cover to near 100% during its passage.
+        """
+    },
+    {
+        "name": "Cyclone Tauktae (2021)", 
+        "region": "Gujarat, Maharashtra, Karnataka, Goa, Kerala", 
+        "image": CYCLONE_IMAGES_DIR / "tauktae.png",
+        "explanation": """
+Cyclone Tauktae (May 2021) tracked parallel to the Konkan shoreline, generating a pronounced SST cooling of \~0.7 °C due to vigorous mixing. The cyclone’s low-pressure eye (< 980 hPa) intensified regional pressure gradients, producing one of the season’s strongest winds—u10 and v10 peaked above 7 m/s. Heavy rainbands delivered 100–200 mm/day, creating sharp positive precipitation anomalies, while total cloud cover soared above 90%, underscoring the dramatic, multi-variable impacts.
+        """
+    },
+    {
+        "name": "Cyclone Biparjoy (2023)", 
+        "region": "Gujarat (Did not make landfall as expected, skirted coast)", 
+        "image": CYCLONE_IMAGES_DIR / "biparjoy.jpg",
+        "explanation": """
+Cyclone Biparjoy (June 2023) passed north of the Konkan coast, elevating SST by up to 1–1.5 °C in its wake due to ocean mixing and upwelling. The storm’s low-pressure core (< 996 hPa) deepened the regional pressure trough, enhancing onshore winds (u10 and v10 increased by \~2 m/s). Convection driven by the warm, moist air mass led to a short-lived but intense precipitation spike (\~150 mm/day) and 20–30% surge in cloud cover over coastal Maharashtra.
+        """
+    }
 ]
+
 DATASETS_TO_DOWNLOAD = {
     "NOAA Precipitation Data": NOAA_PRECIP_FILE, 
     "NOAA SST Data": NOAA_SST_FILE, 
